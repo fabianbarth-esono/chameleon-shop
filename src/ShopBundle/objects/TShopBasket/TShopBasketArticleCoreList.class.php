@@ -472,8 +472,6 @@ class TShopBasketArticleCoreList extends TIterator
             $dRemainingDiscountUse = $dRemainingDiscountUse - $dRealUse;
             $affectedArticle->dPriceAfterDiscount = $affectedArticle->dPriceAfterDiscount - $dValueToUse;
             $affectedArticle->dPriceTotalAfterDiscount = $affectedArticle->dPriceAfterDiscount * $affectedArticle->dAmount;
-            $affectedArticle->dPriceAfterDiscountWithoutVouchers = $affectedArticle->dPriceAfterDiscount;
-            $affectedArticle->dPriceTotalAfterDiscountWithoutVouchers = $affectedArticle->dPriceTotalAfterDiscount;
         }
         if ($dRemainingDiscountUse <= 0.001) {
             return;
@@ -489,8 +487,6 @@ class TShopBasketArticleCoreList extends TIterator
                         $dRemainingDiscountUse = $dRemainingDiscountUse - $dUsePerItem * $affectedArticle->dAmount;
                         $affectedArticle->dPriceAfterDiscount = $affectedArticle->dPriceAfterDiscount - $dUsePerItem;
                         $affectedArticle->dPriceTotalAfterDiscount = $affectedArticle->dPriceAfterDiscount * $affectedArticle->dAmount;
-                        $affectedArticle->dPriceAfterDiscountWithoutVouchers = $affectedArticle->dPriceAfterDiscount;
-                        $affectedArticle->dPriceTotalAfterDiscountWithoutVouchers = $affectedArticle->dPriceTotalAfterDiscount;
                     }
                 }
             }
@@ -518,8 +514,6 @@ class TShopBasketArticleCoreList extends TIterator
             $dRequiredPositionPrice = ($articlesAffected[$indexOfArticleWithSmallestChange]->dPriceTotalAfterDiscount - $dRemainingDiscountUse) / $articlesAffected[$indexOfArticleWithSmallestChange]->dAmount;
             $articlesAffected[$indexOfArticleWithSmallestChange]->dPriceAfterDiscount = $dRequiredPositionPrice;
             $articlesAffected[$indexOfArticleWithSmallestChange]->dPriceTotalAfterDiscount = $articlesAffected[$indexOfArticleWithSmallestChange]->dPriceTotalAfterDiscount - $dRemainingDiscountUse;
-            $articlesAffected[$indexOfArticleWithSmallestChange]->dPriceAfterDiscountWithoutVouchers = $articlesAffected[$indexOfArticleWithSmallestChange]->dPriceAfterDiscount;
-            $articlesAffected[$indexOfArticleWithSmallestChange]->dPriceTotalAfterDiscountWithoutVouchers = $articlesAffected[$indexOfArticleWithSmallestChange]->dPriceTotalAfterDiscount;
         }
     }
 
